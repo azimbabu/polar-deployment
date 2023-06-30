@@ -22,6 +22,7 @@ services:
 
   order-service:
     depends_on:
+      - config-service
       - polar-postgres
     image: "order-service"
     container_name: "order-service"
@@ -50,6 +51,12 @@ services:
       - POSTGRES_PASSWORD=password
     volumes:
       - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  polar-redis:
+    image: "redis:7.0"
+    container_name: "polar-redis"
+    ports:
+      - 6379:6379
 
   config-service:
     image: "config-service"
