@@ -45,10 +45,13 @@ services:
       - SPRING_FLYWAY_URL=jdbc:postgresql://polar-postgres:5432/polardb_order
       - SPRING_RABBITMQ_HOST=polar-rabbitmq
     platform: linux/amd64
-
+# add this line to your /etc/hosts :
+# 127.0.0.1 host.docker.internal
   edge-service:
     depends_on:
+      - polar-keycloak
       - polar-redis
+      - polar-ui
     image: "edge-service"
     container_name: "edge-service"
     ports:
@@ -63,7 +66,9 @@ services:
       - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
       - CATALOG_SERVICE_URL=http://catalog-service:9001
       - ORDER_SERVICE_URL=http://order-service:9002
+      - SPA_URL=http://polar-ui:9004
       - SPRING_DATA_REDIS_HOST=polar-redis
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUER_URI=http://host.docker.internal:8080/realms/PolarBookshop
     platform: linux/amd64
 
   dispatcher-service:
@@ -99,6 +104,15 @@ services:
       - BPL_DEBUG_PORT=9888
     platform: linux/amd64
 
+  polar-ui:
+    image: "ghcr.io/polarbookshop/polar-ui:v1"
+    container_name: "polar-ui"
+    ports:
+      - 9004:9004
+    environment:
+      - PORT=9004
+    platform: linux/amd64
+
   # Backing Services
 
   polar-postgres:
@@ -126,3 +140,15 @@ services:
       - 15672:15672
     volumes:
       - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+
+  polar-keycloak:
+    image: quay.io/keycloak/keycloak:19.0
+    container_name: "polar-keycloak"
+    command: start-dev --import-realm
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+    environment:
+      - KEYCLOAK_ADMIN=user
+      - KEYCLOAK_ADMIN_PASSWORD=password
+    ports:
+      - 8080:8080
