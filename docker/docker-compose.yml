@@ -33,7 +33,6 @@ services:
       driver: fluentd # Which logging driver to use
       options:
         fluentd-address: 127.0.0.1:24224  # The address of the Fluent Bit instance where the logs should be routed
-    platform: linux/amd64
 
   order-service:
     depends_on:
@@ -67,7 +66,7 @@ services:
       driver: fluentd # Which logging driver to use
       options:
         fluentd-address: 127.0.0.1:24224  # The address of the Fluent Bit instance where the logs should be routed
-    platform: linux/amd64
+
 # add this line to your /etc/hosts :
 # 127.0.0.1 host.docker.internal
   edge-service:
@@ -101,7 +100,6 @@ services:
       driver: fluentd # Which logging driver to use
       options:
         fluentd-address: 127.0.0.1:24224  # The address of the Fluent Bit instance where the logs should be routed
-    platform: linux/amd64
 
   dispatcher-service:
     depends_on:
@@ -129,7 +127,6 @@ services:
       driver: fluentd # Which logging driver to use
       options:
         fluentd-address: 127.0.0.1:24224  # The address of the Fluent Bit instance where the logs should be routed
-    platform: linux/amd64
 
   config-service:
     depends_on:
@@ -153,7 +150,6 @@ services:
       driver: fluentd # Which logging driver to use
       options:
         fluentd-address: 127.0.0.1:24224  # The address of the Fluent Bit instance where the logs should be routed
-    platform: linux/amd64
 
   polar-ui:
     depends_on:
