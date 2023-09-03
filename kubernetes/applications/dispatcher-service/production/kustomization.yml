@@ -16,9 +16,9 @@ configMapGenerator:
   name: dispatcher-config
 
 images:
-  - name: dispatcher-service
-    newName: ghcr.io/azimbabu/dispatcher-service
-    newTag: 3f4f5b21b3feff6fcf5c836fedb4474554266e62
+- name: dispatcher-service
+  newName: ghcr.io/azimbabu/dispatcher-service
+  newTag: ce0d00d45ede5f9574f4992dcbf1aea968bf67c7
 
 replicas:
 - count: 1
