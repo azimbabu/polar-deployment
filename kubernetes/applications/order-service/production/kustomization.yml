@@ -16,9 +16,9 @@ configMapGenerator:
   name: order-config
 
 images:
-  - name: order-service
-    newName: ghcr.io/azimbabu/order-service
-    newTag: ecb6a12e41b4386efcc20d66a514d99f272b78a2
+- name: order-service
+  newName: ghcr.io/azimbabu/order-service
+  newTag: 7fc6b9a1205b1d574ef8dcc8e9020a5d3a4ff26e
 
 replicas:
 - count: 1
