@@ -1,3 +1,4 @@
+spa-url: http://polar-ui
 spring:
   config:
     import: configtree:/workspace/secrets/*/
