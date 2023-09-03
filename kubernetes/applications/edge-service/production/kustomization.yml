@@ -17,9 +17,9 @@ configMapGenerator:
   name: edge-config
 
 images:
-  - name: edge-service
-    newName: ghcr.io/azimbabu/edge-service
-    newTag: 32bd5777c016d7c2eb67997fbfc0e275cfc08bd9
+- name: edge-service
+  newName: ghcr.io/azimbabu/edge-service
+  newTag: cee2aeed8623f583a9395489879b7fc296f8cadc
 
 replicas:
 - count: 1
