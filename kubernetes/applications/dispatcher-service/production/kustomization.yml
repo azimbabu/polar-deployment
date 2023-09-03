@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- github.com/azimbabu/dispatcher-service/k8s?ref=main
+
+patchesStrategicMerge:
+- patch-env.yml
+- patch-resources.yml
+- patch-volumes.yml
+
+configMapGenerator:
+- behavior: merge
+  files:
+  - application-prod.yml
+  name: dispatcher-config
+
+images:
+  - name: dispatcher-service
+    newName: ghcr.io/azimbabu/dispatcher-service
+    newTag: 3f4f5b21b3feff6fcf5c836fedb4474554266e62
+
+replicas:
+- count: 1
+  name: dispatcher-service
