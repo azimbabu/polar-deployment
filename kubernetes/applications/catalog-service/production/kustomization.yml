@@ -18,7 +18,7 @@ configMapGenerator:
 images:
 - name: catalog-service
   newName: ghcr.io/azimbabu/catalog-service
-  newTag: 94ce58e5482e862f6e5aa2eb405a6099f4790cfa
+  newTag: b0d3ee5b1d9bc92a2cc943a206f4dcfb3da839b5
 
 replicas:
 - count: 2
