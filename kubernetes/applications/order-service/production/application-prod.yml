@@ -5,4 +5,4 @@ logging:
   level:
     org:
       springframework:
-        integration: DEBUG
+        integration: TRACE
