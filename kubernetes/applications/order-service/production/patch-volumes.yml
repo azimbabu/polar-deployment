@@ -20,7 +20,7 @@ spec:
             secretName: polar-postgres-order-credentials
         - name: rabbitmq-credentials-volume
           secret:
-            secretName: polar-rabbitmq-credentials
+            secretName: polar-rabbitmq-credentials2
         - name: keycloak-issuer-resourceserver-secret-volume
           secret:
             secretName: keycloak-issuer-resourceserver-secret
